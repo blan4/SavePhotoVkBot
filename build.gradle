@@ -25,6 +25,8 @@ apply plugin: 'war'
 
 
 dependencies {
+    compile "com.vk.api:sdk:$vkVersion"
+
     compile 'jstl:jstl:1.2'
 //    providedCompile "javax.servlet:javax.servlet-api:$servletVersion"
     compile "org.springframework.boot:spring-boot-starter-jetty"

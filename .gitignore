@@ -120,3 +120,4 @@ appengine-generated/
 
 .idea
 *.iml
+src/main/resources/application.yml

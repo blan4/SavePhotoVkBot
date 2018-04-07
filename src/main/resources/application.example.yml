@@ -1,0 +1,5 @@
+vk:
+  groupId: GROUP_ID
+  token: TOKEN
+  confirmation: CONFIRMATION
+  secret: SECRET
