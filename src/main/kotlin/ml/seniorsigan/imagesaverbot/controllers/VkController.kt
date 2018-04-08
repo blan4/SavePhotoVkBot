@@ -1,4 +1,4 @@
-package ml.seniorsigan.imagesaverbot
+package ml.seniorsigan.imagesaverbot.controllers
 
 import ml.seniorsigan.imagesaverbot.vk.VkRouter
 import org.slf4j.LoggerFactory
@@ -15,15 +15,11 @@ class VkController(
 ) {
     private val logger = LoggerFactory.getLogger(javaClass)
 
-    @Value("\${vk.confirmation}")
-    private lateinit var code: String
-
     @PostMapping("/api/vk", consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun confirmation(@RequestBody request: String): ResponseEntity<String> {
         logger.info("Received: $request")
         return try {
-            vkRouter.delegate(request)
-            ResponseEntity.ok(code)
+            ResponseEntity.ok(vkRouter.delegate(request))
         } catch (e: Exception) {
             logger.error("Can't handle message $request: ${e.message}", e)
             ResponseEntity.badRequest().body(e.message)

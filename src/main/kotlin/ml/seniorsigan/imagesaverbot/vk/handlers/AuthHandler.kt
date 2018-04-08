@@ -15,11 +15,13 @@ class AuthHandler(
     private lateinit var groupId: String
     @Value("\${vk.secret}")
     private lateinit var secret: String
+    @Value("\${vk.confirmation}")
+    private lateinit var code: String
     private val logger = LoggerFactory.getLogger(javaClass)
 
-    override fun handle(model: JsonNode) {
+    override fun handle(model: JsonNode): String {
         if (model["group_id"].textValue() == groupId && model["secret"].textValue() == secret) {
-            // OK
+            return code
         } else {
             logger.error("Unauthorized request $model. Expected group_id=$groupId and secret=$secret")
             throw Exception("Unauthorized request")

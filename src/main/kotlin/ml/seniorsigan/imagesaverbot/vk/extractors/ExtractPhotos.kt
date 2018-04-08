@@ -15,7 +15,12 @@ class ExtractPhotos {
             ?: photo["photo_604"].textValue() ?: photo["photo_130"].textValue() ?: photo["photo_75"].textValue()
             PhotoModel(
                     url = url,
-                    userId = photo["owner_id"].longValue()
+                    userId = photo["owner_id"].longValue(),
+                    lat = photo["lat"].doubleValue(),
+                    lon = photo["long"].doubleValue(),
+                    height = photo["height"].longValue(),
+                    width = photo["width"].longValue(),
+                    date = photo["date"].longValue()
             )
         }
     }

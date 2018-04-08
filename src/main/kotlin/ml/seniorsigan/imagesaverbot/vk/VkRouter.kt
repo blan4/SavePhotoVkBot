@@ -18,15 +18,15 @@ class VkRouter(
             "message_new" to newMessageHandler
     )
 
-    fun delegate(json: String) {
+    fun delegate(json: String): String {
         val type = mapper.readTree(json)["type"].textValue()
         val handler = handlers[type]
 
         if (handler == null) {
             logger.info("Unknown message type: '$type' for message $json.")
-            return
+            return "ok"
         }
 
-        handler.handle(json)
+        return handler.handle(json)
     }
 }
