@@ -11,16 +11,16 @@ class ExtractPhotos {
             it["type"].textValue() == "photo"
         }.map {
             val photo = it["photo"]
-            val url = photo["photo_1280"].textValue() ?: photo["photo_807"].textValue()
-            ?: photo["photo_604"].textValue() ?: photo["photo_130"].textValue() ?: photo["photo_75"].textValue()
+            val url = photo["photo_1280"]?.textValue() ?: photo["photo_807"]?.textValue()
+            ?: photo["photo_604"]?.textValue() ?: photo["photo_130"]?.textValue() ?: photo["photo_75"]?.textValue()
             PhotoModel(
                     url = url,
-                    userId = photo["owner_id"].longValue(),
-                    lat = photo["lat"].doubleValue(),
-                    lon = photo["long"].doubleValue(),
-                    height = photo["height"].longValue(),
-                    width = photo["width"].longValue(),
-                    date = photo["date"].longValue()
+                    userId = photo["owner_id"]?.longValue() ?: -1,
+                    lat = photo["lat"]?.doubleValue() ?: 0.0,
+                    lon = photo["long"]?.doubleValue() ?: 0.0,
+                    height = photo["height"]?.longValue() ?: -1,
+                    width = photo["width"]?.longValue() ?: -1,
+                    date = photo["date"]?.longValue() ?: System.currentTimeMillis()/1000L
             )
         }
     }
