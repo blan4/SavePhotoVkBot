@@ -16,4 +16,9 @@ class PhotosController(
     fun getAll(): List<PhotoModel> {
         return photoRepository.getAll()
     }
+
+    @GetMapping("/count")
+    fun getCount(): Int {
+        return photoRepository.getAll().groupBy { it.url }.size
+    }
 }
