@@ -11,11 +11,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.web.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.scheduling.annotation.EnableScheduling
+import ssl.LetsencryptSslFix
 
 @SpringBootApplication
+@EnableScheduling
 class ImageSaverBotApplication : SpringBootServletInitializer()
 
 fun main(args: Array<String>) {
+    LetsencryptSslFix.fix()
     SpringApplication.run(ImageSaverBotApplication::class.java, *args)
 }
 
@@ -44,4 +48,15 @@ class VkAPiConfiguration {
     fun groupActor(): GroupActor {
         return GroupActor(groupId.toInt(), token)
     }
+}
+
+@Configuration
+class AnekdotSources {
+    val anekdots = listOf(
+            "https://www.anekdot.ru/rss/tag/26.xml",
+            "https://www.anekdot.ru/rss/tag/21.xml",
+            "https://www.anekdot.ru/rss/tag/33.xml",
+            "https://www.anekdot.ru/rss/tag/37.xml",
+            "https://www.anekdot.ru/rss/tag/40.xml"
+    )
 }

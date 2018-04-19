@@ -25,7 +25,7 @@ class NewMessageHandler(
             photoRepository.insert(it)
         }
         val userId = photos.firstOrNull()?.userId?.toInt()
-        if (userId != null) sender.send("Спасибо ^_^", userId)
+        if (userId != null) sender.send(userId)
         return "ok"
     }
 }

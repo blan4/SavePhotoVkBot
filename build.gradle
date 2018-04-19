@@ -23,6 +23,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'com.google.cloud.tools.appengine'
 apply plugin: 'war'
 
+kotlin { experimental { coroutines 'enable' } }
 
 dependencies {
     compile "com.vk.api:sdk:$vkVersion"
@@ -33,6 +34,9 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-jetty"
     compile "com.google.appengine:appengine-api-1.0-sdk:$appengineVersion"
 
+    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.5"
+    compile 'javax.xml.bind:jaxb-api:2.3.0'
+    compile 'xalan:xalan:2.7.2'
 
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('com.fasterxml.jackson.module:jackson-module-kotlin')
