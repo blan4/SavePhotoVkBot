@@ -21,19 +21,20 @@ class AnekdotRepository(
     private val logger = LoggerFactory.getLogger(javaClass)
 
     fun loadAll() = async {
-        lock.writeLock().withLock {
-            anekdots = sources.anekdots.map {
-                logger.info("Loading anekdots for $it")
-                loader.loadAsync(it)
-            }.flatMap { it.await() }
-            index = 0
-        }
+        anekdots = sources.anekdots.map {
+            logger.info("Loading anekdots for $it")
+            loader.loadAsync(it)
+        }.flatMap { it.await() }
+        logger.info("Anekdots loaded")
+        index = 0
     }
 
     @Scheduled(cron = "0 0 6 * * *") // every day at 6AM
     fun load() {
         runBlocking {
-            loadAll()
+            lock.writeLock().withLock {
+                loadAll()
+            }
         }
     }
 
