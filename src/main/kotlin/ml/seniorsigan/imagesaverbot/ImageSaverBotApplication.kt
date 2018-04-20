@@ -57,6 +57,8 @@ class AnekdotSources {
             "https://www.anekdot.ru/rss/tag/21.xml",
             "https://www.anekdot.ru/rss/tag/33.xml",
             "https://www.anekdot.ru/rss/tag/37.xml",
-            "https://www.anekdot.ru/rss/tag/40.xml"
+            "https://www.anekdot.ru/rss/tag/40.xml",
+            "https://www.anekdot.ru/rss/export_bestday.xml",
+            "https://www.anekdot.ru/rss/export_j.xml"
     )
 }

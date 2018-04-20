@@ -31,7 +31,7 @@ class AnekdotLoader {
     private fun normalize(anekdotModel: AnekdotModel): AnekdotModel {
         return anekdotModel.copy(
                 description = anekdotModel.description
-                        .replace("<br>", "  \\n")
+                        .replace("<br>", "  \n")
                         .replace("- ", "- ")
         )
     }

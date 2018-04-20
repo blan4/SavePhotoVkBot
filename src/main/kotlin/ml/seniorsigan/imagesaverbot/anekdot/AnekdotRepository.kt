@@ -24,7 +24,7 @@ class AnekdotRepository(
         anekdots = sources.anekdots.map {
             logger.info("Loading anekdots for $it")
             loader.loadAsync(it)
-        }.flatMap { it.await() }
+        }.flatMap { it.await() }.shuffled()
         logger.info("Anekdots loaded")
         index = 0
     }

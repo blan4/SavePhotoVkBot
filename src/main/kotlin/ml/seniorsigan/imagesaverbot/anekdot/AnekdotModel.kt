@@ -7,8 +7,5 @@ data class AnekdotModel(
         val pubDate: String,
         val link: String
 ) {
-    val body = """
-        $title
-        $description
-    """.trimIndent()
+    val body = description
 }
